@@ -67,8 +67,9 @@ ini_set("display_errors","On");
 				{
 					$kulakSagEmpty = 1;					
 				}
-								
-				// Create connection
+					
+  	
+			    // Create connection
 				$conn1 = new mysqli($servername, $username, $password, $dbname);
 				// Check connection
 				if ($conn1->connect_error) {
@@ -76,9 +77,8 @@ ini_set("display_errors","On");
 				}
 				
 				if( $kulakSolEmpty == 1 ){
-				$sql1 = "INSERT INTO odio_detay (tarih,kulak,kanaat,ikiyuzelli,besyuz,bir,iki,uc,dort,alti,sekiz) VALUES ('".$_POST['dateData']."','1',
-				'".$_POST['kanaat']."','".$_POST['data1']."','".$_POST['data2']."','".$_POST['data3']."','".$_POST['data4']."','".$_POST['data5']."','".$_POST['data6']."','".$_POST['data7']."','".$_POST['data8']."')";
-				
+				$sql1 = "UPDATE odio_detay SET tarih='".$_POST['dateData']."',kulak='1',kanaat='".$_POST['kanaat']."',ikiyuzelli='".$_POST['data1']."',besyuz='".$_POST['data2']."',bir='".$_POST['data3']."',iki='".$_POST['data4']."',uc='".$_POST['data5']."',dort='".$_POST['data6']."',alti='".$_POST['data7']."',sekiz='".$_POST['data8']."' WHERE ID=".$_GET["id"];
+				//print_r($sql1);
 				if ($conn1->query($sql1) === TRUE) {
 					echo "New record created successfully";
 					//usleep(5000000);
@@ -98,11 +98,9 @@ ini_set("display_errors","On");
 				
 				
 				if( $kulakSagEmpty == 1 ){
-				$sql2 = "INSERT INTO odio_detay (tarih,kulak,kanaat,ikiyuzelli,besyuz,bir,iki,uc,dort,alti,sekiz) VALUES ('".$_POST['dateData']."','2',
-				'".$_POST['kanaat']."','".$_POST['data10']."','".$_POST['data11']."','".$_POST['data12']."','".$_POST['data13']."','".$_POST['data14']."',
-				'".$_POST['data15']."','".$_POST['data16']."','".$_POST['data17']."')";
-				
-				
+				$sql2 = "UPDATE odio_detay SET tarih='".$_POST['dateData']."',kulak='2',kanaat='".$_POST['kanaat']."',ikiyuzelli='".$_POST['data10']."',besyuz='".$_POST['data11']."',bir='".$_POST['data12']."',iki='".$_POST['data13']."',uc='".$_POST['data14']."',dort='".$_POST['data15']."',alti='".$_POST['data16']."',sekiz='".$_POST['data17']."' WHERE ID=".$_GET["id"];
+							
+				//print_r($sql2);
 				
 				if ($conn2->query($sql2) === TRUE) {
 					echo "New record created successfully";
