@@ -104,6 +104,100 @@
 			</ul>
 			</div>';
 			echo '<a class="btn btn-primary float-right" href="http://localhost:1000/odyometri/edit.php?id='.$row["ID"].'" role="button">Edit</a>';
+						
+			echo '<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+			  Data
+			</button>';
+
+			
+			echo '<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Odyometri</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+				  <div class="modal-body">
+				  <div class="form-group">
+                
+					<div class="input-group date" id="datetimepicker1">
+                   
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">'.$row["tarih"].'</span>
+						</span>
+					</div>';
+		
+		
+		
+	echo '</div>';		
+	
+	
+	echo '<div class="form-group">
+  <label for="comment">Kanaat</label>
+  <textarea class="form-control" rows="5" id="comment" name="kanaat" >'.$row["kanaat"].'</textarea>
+  
+  <span class="help-block">0-255</span>
+</div> 
+
+
+  <div class="form-group">
+  <h2>Sonuc	</h2>
+         
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>250 Hz</th>
+        <th>500 Hz</th>
+		<th>1 kHz</th>
+        <th>2 kHz</th>
+		<th>3 kHz</th>
+        <th>4 kHz</th>
+		<th>6 kHz</th>
+        <th>8 kHz</th>
+		<th>SSO</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sol Kulak</td>
+        <td><input type="text" class="form-control" id="data1" name="data1" value="'.$row["ikiyuzelli"].'"></td>
+       <td><input type="text" class="form-control" id="data2" name="data2" value="'.$row["besyuz"].'"></td>
+	   <td><input type="text" class="form-control" id="data3" name="data3" value="'.$row["bir"].'"></td>
+	   <td><input type="text" class="form-control" id="data4" name="data4" value="'.$row["iki"].'"></td>
+	   <td><input type="text" class="form-control" id="data5" name="data5" value="'.$row["uc"].'"></td>
+	   <td><input type="text" class="form-control" id="data6" name="data6" value="'.$row["dort"].'"></td>
+	   <td><input type="text" class="form-control" id="data7" name="data7" value="'.$row["alti"].'"></td>
+	   <td><input type="text" class="form-control" id="data8" name="data8" value="'.$row["sekiz"].'"></td>
+	   <td><span class="label label-info" id="sso1" name="sso1">'.$row["SSO"].'</span></td>
+      </tr>
+      <tr>
+        <td>Sag Kulak</td>
+       <td><input type="text" class="form-control" id="data10" name="data10" value="'.$row["ikiyuzelli"].'"></td>
+       <td><input type="text" class="form-control" id="data11" name="data11" value="'.$row["besyuz"].'"></td>
+	   <td><input type="text" class="form-control" id="data12" name="data12" value="'.$row["bir"].'"></td>
+	   <td><input type="text" class="form-control" id="data13" name="data13" value="'.$row["iki"].'"></td>
+	   <td><input type="text" class="form-control" id="data14" name="data14" value="'.$row["uc"].'"></td>
+	   <td><input type="text" class="form-control" id="data15" name="data15" value="'.$row["dort"].'"></td>
+	   <td><input type="text" class="form-control" id="data16" name="data16" value="'.$row["alti"].'"></td>
+	   <td><input type="text" class="form-control" id="data17" name="data17" value="'.$row["sekiz"].'"></td>
+	    <td><span class="label label-info" id="sso2" name="sso2">'.$row["SSO"].'</span></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  </div>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					
+				  </div>
+				</div>
+			  </div>
+			</div>';
 			echo '</div>';
 		}
 					
@@ -111,7 +205,7 @@
 		} else {
 			$conn->close();
 			echo "<script type='text/javascript'> 
-			alert('KayÄ±t yok!');
+			alert('Kayýt yok!');
 			window.location='http://localhost:1000/odyometri/add.php';
 			</script>";
 				

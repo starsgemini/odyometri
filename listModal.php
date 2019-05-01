@@ -28,6 +28,8 @@
 				}
 				
 				
+				
+				
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +91,26 @@
 	    if ($result->num_rows > 0) {
 			
 		while($row = $result->fetch_assoc()) {
+			
+			    $kulakSolEmpty = 0;
+				$kulakSagEmpty = 0;
+				
+				
+					if($row['kulak']==1){
+					$kulakSolEmpty = 1;
+					}
+				
+				
+				
+					if($row['kulak']==2){
+					$kulakSagEmpty = 1;
+					}
+				
+										
+				
+			
+			
+			
 			echo '<div class="checkbox list-group-item">
 			<label><input type="checkbox" value="'.$row["ID"].'" class="checkboxes">';
 			echo "Odyometri (".$row["tarih"]." )";
@@ -104,6 +126,112 @@
 			</ul>
 			</div>';
 			echo '<a class="btn btn-primary float-right" href="http://localhost:1000/odyometri/edit.php?id='.$row["ID"].'" role="button">Edit</a>';
+						
+			echo '<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+			  Data
+			</button>';
+
+			
+			echo '<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Odyometri</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+				  <div class="modal-body">
+				  <div class="form-group">
+                
+					<div class="input-group date" id="datetimepicker1">
+                   
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">'.$row["tarih"].'</span>
+						</span>
+					</div>';
+		
+		
+		
+	echo '</div>';		
+	
+	
+	echo '<div class="form-group">
+  <label for="comment">Kanaat</label>
+  <textarea class="form-control" rows="5" id="comment" name="kanaat" >'.$row["kanaat"].'</textarea>
+  
+  <span class="help-block">0-255</span>
+</div> 
+
+
+  <div class="form-group">
+  <h2>Sonuc	</h2>
+         
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>250 Hz</th>
+        <th>500 Hz</th>
+		<th>1 kHz</th>
+        <th>2 kHz</th>
+		<th>3 kHz</th>
+        <th>4 kHz</th>
+		<th>6 kHz</th>
+        <th>8 kHz</th>
+		<th>SSO</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>';
+	  
+	  if($kulakSolEmpty == 1)
+	  { 
+	  
+        echo '<td>Sol Kulak</td>
+        <td><span class="label label-success">'.$row["ikiyuzelli"].'</span></td>
+       <td><span class="label label-success">'.$row["besyuz"].'</span></td>
+	   <td><span class="label label-success">'.$row["bir"].'</span></td>
+	   <td><span class="label label-success">'.$row["iki"].'</span></td>
+	   <td><span class="label label-success">'.$row["uc"].'</span></td>
+	   <td><span class="label label-success">'.$row["dort"].'</span></td>
+	   <td><span class="label label-success">'.$row["alti"].'</span></td>
+	   <td><span class="label label-success">'.$row["sekiz"].'</span></td>
+	   <td><span class="label label-info">'.$row["SSO"].'</span></td>
+	   </tr>';
+	   
+	   }
+	
+	   if($kulakSagEmpty == 1)
+	  { 
+	  
+      echo '<tr>
+        <td>Sag Kulak</td>
+        <td><span class="label label-success">'.$row["ikiyuzelli"].'</span></td>
+       <td><span class="label label-success">'.$row["besyuz"].'</span></td>
+	   <td><span class="label label-success">'.$row["bir"].'</span></td>
+	   <td><span class="label label-success">'.$row["iki"].'</span></td>
+	   <td><span class="label label-success">'.$row["uc"].'</span></td>
+	   <td><span class="label label-success">'.$row["dort"].'</span></td>
+	   <td><span class="label label-success">'.$row["alti"].'</span></td>
+	   <td><span class="label label-success">'.$row["sekiz"].'</span></td>
+	   <td><span class="label label-info">'.$row["SSO"].'</span></td>
+      </tr>';
+      
+	  }
+	  
+    echo '</tbody>
+  </table>
+  </div>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					
+				  </div>
+				</div>
+			  </div>
+			</div>';
 			echo '</div>';
 		}
 					
@@ -111,7 +239,7 @@
 		} else {
 			$conn->close();
 			echo "<script type='text/javascript'> 
-			alert('KayÄ±t yok!');
+			alert('Kayýt yok!');
 			window.location='http://localhost:1000/odyometri/add.php';
 			</script>";
 				
